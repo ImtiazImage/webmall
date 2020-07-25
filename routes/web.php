@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::prefix('gt')->group(function() {
     Route::get('/about', function () {
-        return view('about');
+        return view('about',['pageName'=>'About Us Page']);
     });
     Route::get('/contact', function () {
         return view('pages.contact');

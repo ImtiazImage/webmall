@@ -81,7 +81,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    About Page
+                @if($pageName  != '')
+                    Welcome to {{ $pageName }}.
+                @else 
+                    Welcome
+                @endif
                 </div>
 
                 <div class="links">
