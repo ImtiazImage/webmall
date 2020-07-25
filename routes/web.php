@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::prefix('gt')->group(function() {
+    Route::get('/about', function () {
+        return view('about');
+    });
+    Route::get('/contact', function () {
+        return view('pages.contact');
+    });
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
