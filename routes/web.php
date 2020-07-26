@@ -13,19 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('home',function(){
-    echo " you are under the required age limit!";
+Route::get('/', 'HomeController@index');
+
+Route::prefix('gt')->group(function() {    
+    Route::get('/about', 'HomeController@about')->middleware('age');
+    Route::get('/contact', 'HomeController@contact')->middleware('age');
 });
 
-Route::prefix('gt')->group(function() {
-    Route::get('/about', function () {
-        return view('about',['pageName'=>'About Us Page']);
-    })->middleware('age');
-    Route::get('/contact', function () {
-        return view('pages.contact');
-    })->middleware('age');
+
+Route::get('home',function(){
+    echo " you are under the required age limit!";
 });
 
