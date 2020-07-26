@@ -14,14 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/about', 'HomeController@about')->name('aboutPage');
+Route::get('/contact', 'HomeController@contact')->name('contactPage');
 
-Route::prefix('gt')->group(function() {    
-    Route::get('/about', 'HomeController@about');
-    Route::get('/contact', 'HomeController@contact')->name('contactPage');
+Route::prefix('gt')->group(function() {  
+    Route::get('home',function(){
+        echo " you are under the required age limit!";
+    })->middleware('age');
 });
-
-
-Route::get('home',function(){
-    echo " you are under the required age limit!";
-})->middleware('age');
-
