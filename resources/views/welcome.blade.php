@@ -42,7 +42,7 @@
             <a class="nav-link" href="{{route('aboutPage')}}">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="post.html">Sample Post</a>
+            <a class="nav-link" href="{{ route('write.post') }}">Write Post</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('contactPage')}}">Contact</a>
