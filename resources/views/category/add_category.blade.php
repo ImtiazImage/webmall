@@ -25,7 +25,8 @@
                 <a href="{{ route('all.category') }}" class="btn btn-info">   All Category </a>
                 <hr />
 
-                <form name="sentMessage" id="contactForm" novalidate>
+                <form action="{{ route('store.category') }}" method="post">
+                    @csrf
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Category Name</label>

@@ -19,8 +19,10 @@ Route::get('/contact', 'HomeController@contact')->name('contactPage');
 
 Route::get(md5('/add_post'), 'boloController@writePost')->name('write.post');
 
-Route::get(md5('/add_category'), 'boloController@AddCategory')->name('add.category');
-Route::get(md5('/all_category'), 'boloController@AllCategories')->name('all.category');
+// category crud 
+Route::get('/add_category', 'boloController@AddCategory')->name('add.category');
+Route::post('/store_category', 'boloController@StoreCategory')->name('store.category');
+Route::get('/all_category', 'boloController@AllCategories')->name('all.category');
 
 Route::prefix('gt')->group(function() {  
     Route::get('home',function(){
