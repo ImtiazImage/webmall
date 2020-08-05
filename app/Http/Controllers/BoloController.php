@@ -17,6 +17,11 @@ class BoloController extends Controller
     }
     public function StoreCategory(Request $request) 
     {
+        $validatedData = $request->validate([
+            'name' => 'required|unique:categories|max:25|min:4',
+            'slug' => 'required|unique:categories|max:15|min:2'
+        ]);
+
         $data = array();
         $data['name'] = $request->name;
         $data['slug'] = $request->slug;
@@ -26,7 +31,25 @@ class BoloController extends Controller
         // print_r($data);
         $category = DB::table('categories')->insert($data);
         if($category){
-            return Redirect()->back();
+            $notification = array(
+                'message' => 'Category has been successfully created!',
+                'alert-type'=> 'success'
+            );
+            return Redirect()->back()->with($notification);
+        } else {
+            $notification = array(
+                'message' => 'There was an error craeting the category!',
+                'alert-type'=> 'error'
+            );
+            return Redirect()->back()->with($notification);
         }
+    }
+
+    public function AllCategories()
+    {
+        $category = DB::table('categories')->get();
+        // return response()->json($category);
+        // return view('category.all_category',compact('category'));
+        return view('category.all_category')->with('category', $category);
     }
 }
