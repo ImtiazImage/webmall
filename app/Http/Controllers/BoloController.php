@@ -52,4 +52,11 @@ class BoloController extends Controller
         // return view('category.all_category',compact('category'));
         return view('category.all_category')->with('category', $category);
     }
+
+    public function SingleViewCategory($id)
+    {
+        echo $id;
+        $category = DB::table('categories')->where('id',$id)->first();
+        return view('category.view_category')->with('category',$category);
+    }
 }
