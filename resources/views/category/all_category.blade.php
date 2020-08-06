@@ -41,7 +41,7 @@
                         <td>{{$category->created_at}}</td>
                         <td>
                             <a href="" class="btn btn-sm btn-info">Edit</a>
-                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="{{URL::to('delete-category/'.$category->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a>
                             <a href="{{URL::to('single-view-category/'.$category->id)}}" class="btn btn-sm btn-success">View</a>
                         </td>
                     </tr>

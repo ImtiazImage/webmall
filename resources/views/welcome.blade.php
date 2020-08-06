@@ -20,6 +20,7 @@
   <link href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css'  rel="stylesheet" type="text/css" >
   <!-- Custom styles for this template -->
   <link href="{{ asset('frontend/css/clean-blog.min.css')}}" rel="stylesheet">
+  <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css" rel="stylesheet">
 
 </head>
 
@@ -99,6 +100,7 @@
   <!-- Custom scripts for this template -->
   <script src="{{ asset('frontend/js/clean-blog.min.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"> </script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></sc
 <script>
   @if(Session::has('message'))
     var type = "{{Session::get('alert-type','info')}}"
@@ -117,6 +119,44 @@
         break;      
     }
   @endif 
+  </script>
+
+  <script>
+    $(document).on("click","#delete", function(e){
+      e.preventDefault();
+      var link = $(this).attr("href");
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+
+        swalWithBootstrapButtons.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'No, cancel!',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.value) {
+            window.location.href = link;
+
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              'Cancelled',
+              'Your imaginary file is safe :)',
+              'error'
+            )
+          }
+        });
+    });
   </script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 

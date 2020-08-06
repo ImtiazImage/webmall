@@ -59,4 +59,14 @@ class BoloController extends Controller
         $category = DB::table('categories')->where('id',$id)->first();
         return view('category.view_category')->with('category',$category);
     }
+
+    public function DeleteCategory($id)
+    {
+        $delete = DB::table('categories')->where('id',$id)->delete();
+        $notification = array(
+            'message' => 'Category successfully deleted!',
+            'alert-type'=>'success'
+        );
+        return Redirect()->back()->with($notification);
+    }
 }
