@@ -25,21 +25,31 @@
                 <a href="{{ route('all.category') }}" class="btn btn-info">   All Category </a>
                 <hr />
 
-                <form name="sentMessage" id="contactForm" novalidate>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form action="{{route('store.post')}}" method="post" enctype="multipart/form-data">
+                @csrf
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Post Title</label>
-                            <input type="text" class="form-control" placeholder="Post Name" required>
+                            <input type="text" class="form-control" placeholder="Title" name="title" required>
                         </div>
                     </div>
                     <br>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Post Category</label>
-                            <select class="form-control" name="post_category"> 
-                                <option> sds </option>
-                                <option> sds2 </option>
-                                <option> sds3  </option>
+                            <select class="form-control" name="category_id"> 
+                            @foreach($categories as $cat)
+                                <option value="{{$cat->id}}"> {{$cat->name}} </option>
+                            @endforeach
                             </select>
                         </div>
                     </div>
@@ -47,14 +57,14 @@
                     <div class="control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Post Image</label>
-                            <input type="file" class="form-control" required>
+                            <input type="file" class="form-control" name="image" required>
                         </div>
                     </div>
                     <br>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Post Details</label>
-                            <textarea rows="5" class="form-control" placeholder="Post Details" required></textarea>
+                            <textarea rows="5" class="form-control" name="details" placeholder="Post Details" required></textarea>
                         </div>
                     </div>
                     <br>

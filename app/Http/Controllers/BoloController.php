@@ -6,12 +6,6 @@ use Illuminate\Http\Request;
 use DB;
 class BoloController extends Controller
 {
-    public function writePost()
-    {
-        return view('post.writepost');
-    }
-
-
     public function AddCategory(){
         return view('category.add_category');
     }
