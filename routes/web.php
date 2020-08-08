@@ -25,6 +25,8 @@ Route::post('/store_category', 'boloController@StoreCategory')->name('store.cate
 Route::get('/all_category', 'boloController@AllCategories')->name('all.category');
 Route::get('/single-view-category/{id}', 'boloController@SingleViewCategory');
 Route::get('/delete-category/{id}', 'boloController@DeleteCategory');
+Route::get('/edit-category/{id}', 'boloController@EditCategory');
+Route::post('/update-category/{id}', 'boloController@UpdateCategory');
 
 Route::prefix('gt')->group(function() {  
     Route::get('home',function(){

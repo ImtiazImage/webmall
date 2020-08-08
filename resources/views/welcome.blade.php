@@ -100,7 +100,7 @@
   <!-- Custom scripts for this template -->
   <script src="{{ asset('frontend/js/clean-blog.min.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"> </script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></sc
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
 <script>
   @if(Session::has('message'))
     var type = "{{Session::get('alert-type','info')}}"
