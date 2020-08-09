@@ -9,7 +9,10 @@ class PostController extends Controller
 {
 
     public function AllPosts(){
-        $posts = DB::table('posts')->get();
+        $posts = DB::table('posts')
+                    ->join('categories','posts.category_id','categories.id')
+                    ->select('posts.*','categories.name','categories.slug')
+                    ->get();
         return view('post.all_posts',compact('posts'));
     }
 

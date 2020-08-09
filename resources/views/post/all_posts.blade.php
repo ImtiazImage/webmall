@@ -35,7 +35,7 @@
                     @foreach($posts as $post)
                     <tr>
                         <td>{{$post->id}}</td>
-                        <td>{{$post->category_id}}</td>
+                        <td>{{$post->name}}</td>
                         <td>{{$post->title}}</td>
                         <td><img src="{{URL::to($post->image)}}" alt="" style="height:40px; width:70px"> </td>
                         <td>
