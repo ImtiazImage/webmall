@@ -23,6 +23,7 @@
             
                 <a href="{{ route('add.category') }}" class="btn btn-danger"> Add Category </a>
                 <a href="{{ route('all.category') }}" class="btn btn-info">   All Category </a>
+                <a href="{{ route('all.post') }}" class="btn btn-info">   All Post </a>
                 <hr />
 
                 @if ($errors->any())

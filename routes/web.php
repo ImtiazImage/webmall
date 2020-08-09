@@ -19,6 +19,7 @@ Route::get('/contact', 'HomeController@contact')->name('contactPage');
 
 Route::get(md5('/add_post'), 'PostController@writePost')->name('write.post');
 Route::post('/store_post', 'PostController@StorePost')->name('store.post');
+Route::get('/all_posts','PostController@AllPosts')->name('all.post');
 
 // category crud 
 Route::get('/add_category', 'boloController@AddCategory')->name('add.category');

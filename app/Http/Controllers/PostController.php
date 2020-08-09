@@ -7,6 +7,12 @@ use DB;
 
 class PostController extends Controller
 {
+
+    public function AllPosts(){
+        $posts = DB::table('posts')->get();
+        return view('post.all_posts',compact('posts'));
+    }
+
     public function writePost()
     {
         $categories = DB::table('categories')->get();
