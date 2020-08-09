@@ -61,4 +61,16 @@ class PostController extends Controller
             return Redirect()->back()->with($notification);
         }
     }
+
+    public function ViewPost($id)
+    {
+        $post = DB::table('posts')
+                    ->join('categories','posts.category_id','categories.id')
+                    ->select('posts.*', 'categories.name', 'categories.slug')
+                    ->where('posts.id',$id)
+                    ->first();
+
+        // return Response()->json($post);
+        return view('post.view_post',compact('post'));
+    }
 }

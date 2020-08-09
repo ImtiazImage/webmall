@@ -17,14 +17,15 @@ Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about')->name('aboutPage');
 Route::get('/contact', 'HomeController@contact')->name('contactPage');
 
-Route::get(md5('/add_post'), 'PostController@writePost')->name('write.post');
-Route::post('/store_post', 'PostController@StorePost')->name('store.post');
-Route::get('/all_posts','PostController@AllPosts')->name('all.post');
+Route::get(md5('/add-post'), 'PostController@writePost')->name('write.post');
+Route::post('/store-post', 'PostController@StorePost')->name('store.post');
+Route::get('/all-posts','PostController@AllPosts')->name('all.post');
+Route::get('/view-single-post/{id}', 'PostController@ViewPost');
 
 // category crud 
-Route::get('/add_category', 'boloController@AddCategory')->name('add.category');
-Route::post('/store_category', 'boloController@StoreCategory')->name('store.category');
-Route::get('/all_category', 'boloController@AllCategories')->name('all.category');
+Route::get('/add-category', 'boloController@AddCategory')->name('add.category');
+Route::post('/store-category', 'boloController@StoreCategory')->name('store.category');
+Route::get('/all-category', 'boloController@AllCategories')->name('all.category');
 Route::get('/single-view-category/{id}', 'boloController@SingleViewCategory');
 Route::get('/delete-category/{id}', 'boloController@DeleteCategory');
 Route::get('/edit-category/{id}', 'boloController@EditCategory');
