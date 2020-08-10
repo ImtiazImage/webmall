@@ -82,8 +82,7 @@ class PostController extends Controller
         $delete= DB::table('posts')->where('id',$id)->delete();
         if($delete)
         {
-            if($image != '')
-                unlink($image);
+            unlink($image);
             $notification = array(
                 'message' => 'Successfully Post Deleted!',
                 'alert-type'=>'success'
