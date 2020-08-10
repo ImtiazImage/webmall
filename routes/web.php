@@ -21,6 +21,9 @@ Route::get(md5('/add-post'), 'PostController@writePost')->name('write.post');
 Route::post('/store-post', 'PostController@StorePost')->name('store.post');
 Route::get('/all-posts','PostController@AllPosts')->name('all.post');
 Route::get('/view-single-post/{id}', 'PostController@ViewPost');
+Route::get('/delete-post/{id}', 'PostController@DeletePost');
+Route::get('/edit-post/{id}', 'PostController@EditPost');
+Route::post('/update-post/{id}', 'PostController@UpdatePost');
 
 // category crud 
 Route::get('/add-category', 'boloController@AddCategory')->name('add.category');

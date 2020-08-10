@@ -39,8 +39,8 @@
                         <td>{{$post->title}}</td>
                         <td><img src="{{URL::to($post->image)}}" alt="" style="height:40px; width:70px"> </td>
                         <td>
-                            <a href="" class="btn btn-sm btn-info">Edit</a>
-                            <a href="" id="delete" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="{{URL::to('edit-post/'.$post->id)}}" class="btn btn-sm btn-info">Edit</a>
+                            <a href="{{URL::to('delete-post/'.$post->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a>
                             <a href="{{URL::to('view-single-post/'.$post->id)}}" class="btn btn-sm btn-success">View</a>
                         </td>
                     </tr>

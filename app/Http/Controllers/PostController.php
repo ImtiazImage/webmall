@@ -50,7 +50,7 @@ class PostController extends Controller
                 'message' => 'Post has been successfully added!',
                 'alert-type'=> 'success'
             );
-            return Redirect()->back()->with($notification);
+            return Redirect()->route('all.post')->with($notification);
 
         } else {
             DB::table('posts')->insert($data);
@@ -58,7 +58,7 @@ class PostController extends Controller
                 'message' => 'Post has been successfully added!',
                 'alert-type'=> 'success'
             );
-            return Redirect()->back()->with($notification);
+            return Redirect()->route('all.post')->with($notification);
         }
     }
 
@@ -72,5 +72,41 @@ class PostController extends Controller
 
         // return Response()->json($post);
         return view('post.view_post',compact('post'));
+    }
+
+    public function DeletePost($id) 
+    {
+        $post = DB::table('posts')->where('id',$id)->first();
+        if($post->image != null)
+        $image = $post->image;
+        $delete= DB::table('posts')->where('id',$id)->delete();
+        if($delete)
+        {
+            if($image != '')
+                unlink($image);
+            $notification = array(
+                'message' => 'Successfully Post Deleted!',
+                'alert-type'=>'success'
+            );
+            return Redirect()->back()->with($notification);
+        } else {
+            $notification = array(
+                'message' => 'Something went Wrong! ',
+                'alert-type'=> 'error'
+            );
+            return Redirect()->back()->with($notification);
+        }
+    }
+
+    public function EditPost($id)
+    {   $categories = DB::table('categories')->get();
+        $post =  DB::table('posts')->where('id',$id)->first();
+
+        return view('post.edit_post',compact('categories','post'));
+        // echo "Edit post no: ".$id;
+    }
+    public function UpdatePost($id)
+    {
+        echo "updating Post no ".$id;
     }
 }
