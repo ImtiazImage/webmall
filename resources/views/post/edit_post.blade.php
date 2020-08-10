@@ -58,8 +58,9 @@
                     <div class="control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Post Image</label>
+                            <input type="file" class="form-control" name="image"> <br />
                             <img src="{{URL::to($post->image)}}" alt="{{$post->title}} image" style="height:100px; width: 150px;">
-                            <input type="file" class="form-control" name="image">
+                            <input type="hidden" name="old_photo" value="{{$post->image}}"/>
                         </div>
                     </div>
                     <br>
